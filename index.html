@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>扫雷</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- 标题与难度切换 -->
+    <header class="header">
+      <h1 class="title">💣 扫雷</h1>
+      <nav class="difficulty" aria-label="难度选择">
+        <button type="button" class="diff-btn" data-diff="beginner">初级</button>
+        <button type="button" class="diff-btn" data-diff="intermediate">中级</button>
+        <button type="button" class="diff-btn" data-diff="expert">高级</button>
+        <button type="button" class="diff-btn" data-diff="custom">自定义</button>
+      </nav>
+      <button type="button" class="mute-btn" id="mute-btn" title="音效：开" aria-label="音效开关（当前开）">🔊</button>
+    </header>
+
+    <!-- 状态栏：剩余雷数 | 表情 | 计时 -->
+    <section class="statusbar" aria-label="游戏状态">
+      <div class="stat mines" id="mines-left" aria-label="剩余雷数">000</div>
+      <button type="button" class="face" id="face-btn" title="重新开始" aria-label="重新开始">😊</button>
+      <div class="stat timer" id="timer" aria-label="计时">00:00</div>
+    </section>
+
+    <!-- 棋盘 -->
+    <section class="board-wrap" aria-label="棋盘">
+      <div class="board" id="board"></div>
+    </section>
+
+    <!-- 操作提示 -->
+    <footer class="hint">
+      <p>左键：翻开 ｜ 右键：插旗 / 问号 ｜ 点击数字格：快速展开（Chord）</p>
+    </footer>
+  </main>
+
+  <!-- 自定义难度对话框 -->
+  <dialog class="custom-dialog" id="custom-dialog">
+    <form method="dialog" id="custom-form">
+      <h2>自定义难度</h2>
+      <label>
+        行数（9 ~ 40）
+        <input type="number" id="custom-rows" min="9" max="40" value="16" required />
+      </label>
+      <label>
+        列数（9 ~ 60）
+        <input type="number" id="custom-cols" min="9" max="60" value="16" required />
+      </label>
+      <label>
+        雷数（1 ~ 行×列−9）
+        <input type="number" id="custom-mines" min="1" value="40" required />
+      </label>
+      <p class="custom-error" id="custom-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="dialog-cancel" id="custom-cancel">取消</button>
+        <button type="submit" class="dialog-ok" id="custom-ok">确定</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
